@@ -46,17 +46,13 @@ sun. This is both healthy and beneficial for human skin. The sun has long been c
 greatest health giver and healer and has played a chief role at health resorts ever since August
 Rollick, the Swiss father of heliotherapy, opened his first high-Alps sanatorium in 1903.
 
-**B.** The medical world appears to be divided on the effects of the sun upon the human body.
-From statements like, “There is no known relationship between a tan and health” to “perhaps
-sun-tanned skin absorbs the ultraviolet rays and converts them into helpful energy”, there are
-some things which are still the topic of research. Doctors agree on one of the benefits of the
-sun – vitamin D. It is well known that vitamin D is acquired from the direct rays of the sun
-– an entirely separate miracle from sun tanning. The sun’s ultraviolet rays penetrate only a
-tiny amount into the human skin, but in the process, they irradiate an element in the skin
-called ergosterol, which is a substance that stores up reserves of vitamin D received from the
-sun. This is both healthy and beneficial for human skin. The sun has long been called nature’s
-greatest health giver and healer and has played a chief role at health resorts ever since August
-Rollick, the Swiss father of heliotherapy, opened his first high-Alps sanatorium in 1903.
+**B.** B. Dr. W. W. Coblenz suggests that the sun cure is a major factor in the treatment of at least
+23 skin diseases, ranging from acne and eczema to ulcers and wounds. Another specialist,
+Dr. Richard Kovacs writes, “Sun treatment is often helpful to persons suffering from general
+debility – repeated colds, respiratory diseases, influenza and the like”. After a long winter,
+the return to the sun writes Dr. Leonard Dodds, the British sunlight scholar, “is a general
+stimulus to the body, more potent if applied after a period when it has been lacking which
+gradually loses its effect if exposure is over prolonged, even when not excessive”.
 """)
 
         st.markdown("""
