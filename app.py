@@ -46,7 +46,7 @@ sun. This is both healthy and beneficial for human skin. The sun has long been c
 greatest health giver and healer and has played a chief role at health resorts ever since August
 Rollick, the Swiss father of heliotherapy, opened his first high-Alps sanatorium in 1903.
 
-**B.** B. Dr. W. W. Coblenz suggests that the sun cure is a major factor in the treatment of at least
+**B.** Dr. W. W. Coblenz suggests that the sun cure is a major factor in the treatment of at least
 23 skin diseases, ranging from acne and eczema to ulcers and wounds. Another specialist,
 Dr. Richard Kovacs writes, “Sun treatment is often helpful to persons suffering from general
 debility – repeated colds, respiratory diseases, influenza and the like”. After a long winter,
