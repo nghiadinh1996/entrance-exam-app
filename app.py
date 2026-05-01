@@ -140,6 +140,12 @@ for index, row in questions.iterrows():
         st.header(section_title)
         show_reading_passage(part, section)
 
+        if part == "Listening" and section == "Part 1":
+            st.audio("listening_part1.mp3", format="audio/mp3")
+
+        elif part == "Listening" and section == "Part 2":
+            st.audio("listening_part2.mp3", format="audio/mp3")
+
     if qid == "L2_14" and image and not shown_image:
         st.image(image, use_container_width=True)
         shown_image = True
