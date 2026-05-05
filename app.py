@@ -291,6 +291,29 @@ if submitted:
         st.subheader("Answer Review")
         st.dataframe(pd.DataFrame(review_rows), use_container_width=True)
 
+        summary_info = pd.DataFrame([{
+            "Question": "SUMMARY",
+            "Section": "",
+            "Your answer": f"Name: {name} | Email: {email}",
+            "Correct answer": f"Listening: {listening_score}/{listening_total} | Reading: {reading_score}/{reading_total}",
+            "Result": ""
+        }])
+    
+    answer_review = pd.DataFrame(review_rows)
+    
+    download_df = pd.concat([summary_info, answer_review], ignore_index=True)
+    
+    result_csv = download_df.to_csv(index=False).encode("utf-8")
+    
+    safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
+    
+    st.download_button(
+        label="Download Result File",
+        data=result_csv,
+        file_name=f"{safe_name}_entrance_exam_result.csv",
+        mime="text/csv"
+    )
+            
         result = pd.DataFrame([{
             "name": name,
             "email": email,
