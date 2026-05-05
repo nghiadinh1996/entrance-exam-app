@@ -299,20 +299,20 @@ if submitted:
             "Result": ""
         }])
     
-    answer_review = pd.DataFrame(review_rows)
-    
-    download_df = pd.concat([summary_info, answer_review], ignore_index=True)
-    
-    result_csv = download_df.to_csv(index=False).encode("utf-8")
-    
-    safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
-    
-    st.download_button(
-        label="Download Result File",
-        data=result_csv,
-        file_name=f"{safe_name}_entrance_exam_result.csv",
-        mime="text/csv"
-    )
+        answer_review = pd.DataFrame(review_rows)
+        
+        download_df = pd.concat([summary_info, answer_review], ignore_index=True)
+        
+        result_csv = download_df.to_csv(index=False).encode("utf-8")
+        
+        safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
+        
+        st.download_button(
+            label="Download Result File",
+            data=result_csv,
+            file_name=f"{safe_name}_entrance_exam_result.csv",
+            mime="text/csv"
+        )
             
         result = pd.DataFrame([{
             "name": name,
