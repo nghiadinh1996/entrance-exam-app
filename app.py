@@ -1,6 +1,8 @@
 import re
 import pandas as pd
 import streamlit as st
+from PIL import Image, ImageDraw, ImageFont
+import io
 
 QUESTIONS_FILE = "questions.csv"
 RESULTS_FILE = "student_results.csv"
@@ -223,6 +225,37 @@ for index, row in questions.iterrows():
 
     st.write("")
 
+def generate_result_image(name, email, listening_score, listening_total, reading_score, reading_total):
+    width = 900
+    height = 500
+
+    img = Image.new("RGB", (width, height), "white")
+    draw = ImageDraw.Draw(img)
+
+    # Use default font (safe for deployment)
+    font_title = ImageFont.load_default()
+    font_text = ImageFont.load_default()
+
+    # Header
+    draw.rectangle([0, 0, width, 80], fill=(40, 40, 40))
+    draw.text((40, 25), "ENTRANCE EXAM RESULT", fill="white", font=font_title)
+
+    # Info
+    draw.text((40, 120), f"Name: {name}", fill="black", font=font_text)
+    draw.text((40, 160), f"Email: {email}", fill="black", font=font_text)
+
+    # Scores box
+    draw.rectangle([40, 220, width - 40, 380], outline="black", width=2)
+
+    draw.text((70, 260), f"Listening score: {listening_score}/{listening_total}", fill="black", font=font_text)
+    draw.text((70, 310), f"Reading score: {reading_score}/{reading_total}", fill="black", font=font_text)
+
+    # Save to buffer
+    buffer = io.BytesIO()
+    img.save(buffer, format="PNG")
+    buffer.seek(0)
+
+    return buffer
 
 submitted = st.button("Submit Exam", type="primary")
 
@@ -291,22 +324,17 @@ if submitted:
         st.subheader("Answer Review")
         st.dataframe(pd.DataFrame(review_rows), use_container_width=True)
 
-        summary_info = pd.DataFrame([{
-            "Question": "SUMMARY",
-            "Section": "",
-            "Your answer": f"Name: {name} | Email: {email}",
-            "Correct answer": f"Listening: {listening_score}/{listening_total} | Reading: {reading_score}/{reading_total}",
-            "Result": ""
-        }])
-    
-        answer_review = pd.DataFrame(review_rows)
-        
-        download_df = pd.concat([summary_info, answer_review], ignore_index=True)
-        
-        result_csv = download_df.to_csv(index=False).encode("utf-8")
+        result_image = generate_result_image(
+            name,
+            email,
+            listening_score,
+            listening_total,
+            reading_score,
+            reading_total
+        )
         
         safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
-
+        
         st.markdown("""
         <div style="
             font-size: 22px;
@@ -320,13 +348,12 @@ if submitted:
         Please download and send the result to me
         </div>
         """, unsafe_allow_html=True)
-
         
         st.download_button(
-            label="Download Result File",
-            data=result_csv,
-            file_name=f"{safe_name}_entrance_exam_result.csv",
-            mime="text/csv"
+            label="Download Result Image",
+            data=result_image,
+            file_name=f"{safe_name}_exam_result.png",
+            mime="image/png"
         )
             
         result = pd.DataFrame([{
