@@ -306,6 +306,21 @@ if submitted:
         result_csv = download_df.to_csv(index=False).encode("utf-8")
         
         safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
+
+        st.markdown("""
+        <div style="
+            font-size: 22px;
+            font-weight: bold;
+            color: #FFD700;
+            background-color: #2a2a2a;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+        ">
+        Please download and send the result to me
+        </div>
+        """, unsafe_allow_html=True)
+
         
         st.download_button(
             label="Download Result File",
