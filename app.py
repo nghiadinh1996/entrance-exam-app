@@ -257,9 +257,16 @@ def generate_result_image(name, email, listening_score, listening_total, reading
 
     return buffer
 
+if "exam_submitted" not in st.session_state:
+    st.session_state.exam_submitted = False
+
+if "result_image" not in st.session_state:
+    st.session_state.result_image = None
+
 submitted = st.button("Submit Exam", type="primary")
 
 if submitted:
+    st.session_state.exam_submitted = True
     if not name.strip() or not email.strip():
         st.error("Please enter both your full name and email.")
     else:
@@ -324,13 +331,13 @@ if submitted:
         st.subheader("Answer Review")
         st.dataframe(pd.DataFrame(review_rows), use_container_width=True)
 
-        result_image = generate_result_image(
+        st.session_state.result_image = generate_result_image(
             name,
             email,
             listening_score,
             listening_total,
             reading_score,
-            reading_total
+            reading_totalhttps://github.com/nghiadinh1996/entrance-exam-app/blob/main/app.py
         )
         
         safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
@@ -351,7 +358,7 @@ if submitted:
         
         st.download_button(
             label="Download Result Image",
-            data=result_image,
+            data=st.session_state.result_image,
             file_name=f"{safe_name}_exam_result.png",
             mime="image/png"
         )
