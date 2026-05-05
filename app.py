@@ -337,7 +337,7 @@ if submitted:
             listening_score,
             listening_total,
             reading_score,
-            reading_totalhttps://github.com/nghiadinh1996/entrance-exam-app/blob/main/app.py
+            reading_total
         )
         
         safe_name = name.replace(" ", "_").replace("/", "_").replace("\\", "_")
